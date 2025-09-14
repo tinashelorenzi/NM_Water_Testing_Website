@@ -1,0 +1,44 @@
+# Laravel specific
+nm-water-testing/.env
+nm-water-testing/.env.backup
+nm-water-testing/.phpunit.result.cache
+nm-water-testing/Homestead.json
+nm-water-testing/Homestead.yaml
+nm-water-testing/auth.json
+nm-water-testing/npm-debug.log
+nm-water-testing/yarn-error.log
+
+# Dependencies
+nm-water-testing/node_modules/
+nm-water-testing/vendor/
+
+# Build outputs
+nm-water-testing/public/build/
+nm-water-testing/public/hot
+nm-water-testing/public/storage
+nm-water-testing/storage/*.key
+
+# Cache and logs
+nm-water-testing/storage/framework/cache/*
+nm-water-testing/storage/framework/sessions/*
+nm-water-testing/storage/framework/views/*
+nm-water-testing/storage/logs/*
+nm-water-testing/bootstrap/cache/*
+
+# Database
+nm-water-testing/database/database.sqlite
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Deployment files
+.env.production
+
