@@ -5,14 +5,13 @@ import logo from '../assets/logo.jpg';
 import { 
   Menu, 
   X, 
-  Phone, 
   Mail, 
-  MessageCircle,
   ChevronDown,
   TestTube,
   FileText,
   Info,
-  Home
+  Home,
+  Droplets
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -81,7 +80,7 @@ const Navbar = () => {
     { 
       name: 'Contact', 
       path: '/contact',
-      icon: <MessageCircle className="w-4 h-4" />
+      icon: <Mail className="w-4 h-4" />
     },
   ];
 
@@ -103,13 +102,20 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-                <div className="w-12 h-12 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue transition-all duration-300">
+                {/* Desktop Logo - Natural aspect ratio */}
+                <div className="hidden sm:block h-12 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue transition-all duration-300">
                   <img 
                     src={logo} 
                     alt="NM Water Testing Laboratory" 
-                    className="w-full h-full object-cover"
+                    className="h-full w-auto object-contain"
                   />
                 </div>
+                
+                {/* Mobile Logo - Water drop icon */}
+                <div className="sm:hidden w-12 h-12 bg-gradient-to-br from-royal-blue-500 to-water-blue-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue transition-all duration-300">
+                  <Droplets className="w-6 h-6 text-white" />
+                </div>
+                
                 {/* Floating indicator */}
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
@@ -133,8 +139,8 @@ const Navbar = () => {
                       >
                         <span className={`font-medium transition-all duration-300 ${
                           location.pathname === item.path
-                            ? 'text-royal-blue-600' 
-                            : 'text-charcoal-800 hover:text-royal-blue-600'
+                            ? 'text-black' 
+                            : 'text-charcoal-800 hover:text-royal-blue-500'
                         }`}>
                           {item.name}
                         </span>
@@ -175,7 +181,7 @@ const Navbar = () => {
                                     {item.icon}
                                   </div>
                                   <div className="flex-1">
-                                    <div className="font-medium text-charcoal-800 group-hover:text-royal-blue-600 transition-colors duration-200">
+                                    <div className="font-medium text-charcoal-800 group-hover:text-royal-blue-500 transition-colors duration-200">
                                       {dropdownItem.name}
                                     </div>
                                     <div className="text-sm text-charcoal-500 mt-1">
@@ -194,11 +200,11 @@ const Navbar = () => {
                       to={item.path}
                       className="relative group px-4 py-2"
                     >
-                      <span className={`font-medium transition-all duration-300 ${
-                        location.pathname === item.path
-                          ? 'text-royal-blue-600' 
-                          : 'text-charcoal-800 hover:text-royal-blue-600'
-                      }`}>
+                        <span className={`font-medium transition-all duration-300 ${
+                          location.pathname === item.path
+                            ? 'text-black' 
+                            : 'text-charcoal-800 hover:text-royal-blue-500'
+                        }`}>
                         {item.name}
                       </span>
                       
@@ -215,7 +221,7 @@ const Navbar = () => {
                       {/* Hover indicator */}
                       <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${
                         location.pathname === item.path
-                          ? 'bg-royal-blue-50'
+                          ? ''
                           : 'group-hover:bg-royal-blue-50 opacity-0 group-hover:opacity-100'
                       }`} />
                     </Link>
@@ -225,27 +231,8 @@ const Navbar = () => {
             </div>
 
 
-            {/* Contact Info & CTA (Desktop) */}
-            <div className="hidden lg:flex items-center gap-4">
-              <div className="flex items-center gap-4">
-                <a
-                  href="tel:+27609462930"
-                  className="flex items-center gap-2 transition-colors duration-300 text-charcoal-800 hover:text-royal-blue-600"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span className="text-sm font-medium">060 946 2930</span>
-                </a>
-                <a
-                  href="https://wa.me/27609462930"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 transition-colors duration-300 text-green-600 hover:text-green-700"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span className="text-sm font-medium">WhatsApp</span>
-                </a>
-              </div>
-              
+            {/* CTA Button (Desktop) */}
+            <div className="hidden lg:flex items-center">
               <Link
                 to="/contact"
                 className="btn px-6 py-2 text-sm font-medium rounded-xl transition-all duration-300 bg-royal-blue-600 hover:bg-royal-blue-700 text-white shadow-lg hover:shadow-xl"
@@ -296,8 +283,8 @@ const Navbar = () => {
                             onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
                             className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${
                               location.pathname === item.path
-                                ? 'bg-royal-blue-500 text-white shadow-lg'
-                                : 'text-charcoal-700 hover:bg-royal-blue-50 hover:text-royal-blue-600'
+                                ? 'text-black'
+                                : 'text-charcoal-700 hover:bg-royal-blue-50 hover:text-royal-blue-500'
                             }`}
                           >
                             <div className="flex items-center gap-2">
@@ -327,7 +314,7 @@ const Navbar = () => {
                                         setIsOpen(false);
                                         setActiveDropdown(null);
                                       }}
-                                      className="block px-3 py-2 rounded-lg text-sm text-charcoal-600 hover:bg-royal-blue-50 hover:text-royal-blue-600 transition-all duration-200"
+                                      className="block px-3 py-2 rounded-lg text-sm text-charcoal-600 hover:bg-royal-blue-50 hover:text-royal-blue-500 transition-all duration-200"
                                     >
                                       <div className="font-medium">{dropdownItem.name}</div>
                                       <div className="text-xs text-charcoal-400 mt-1">{dropdownItem.description}</div>
@@ -344,8 +331,8 @@ const Navbar = () => {
                           onClick={() => setIsOpen(false)}
                           className={`flex items-center gap-2 px-4 py-3 rounded-xl text-lg font-medium transition-all duration-300 ${
                             location.pathname === item.path
-                              ? 'bg-royal-blue-500 text-white shadow-lg'
-                              : 'text-charcoal-700 hover:bg-royal-blue-50 hover:text-royal-blue-600'
+                              ? 'text-black'
+                              : 'text-charcoal-700 hover:bg-royal-blue-50 hover:text-royal-blue-500'
                           }`}
                         >
                           {item.icon}
@@ -365,22 +352,6 @@ const Navbar = () => {
                   className="border-t border-gray-200 pt-6"
                 >
                   <div className="grid grid-cols-1 gap-3 mb-6">
-                    <a
-                      href="tel:+27609462930"
-                      className="flex items-center gap-3 p-3 bg-royal-blue-50 rounded-xl text-royal-blue-600 font-medium"
-                    >
-                      <Phone className="w-5 h-5" />
-                      <span>+27 60 946 2930</span>
-                    </a>
-                    <a
-                      href="https://wa.me/27609462930"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 bg-green-50 rounded-xl text-green-600 font-medium"
-                    >
-                      <MessageCircle className="w-5 h-5" />
-                      <span>WhatsApp Us</span>
-                    </a>
                     <a
                       href="mailto:info@nmwatertesting.co.za"
                       className="flex items-center gap-3 p-3 bg-water-blue-50 rounded-xl text-water-blue-600 font-medium"

@@ -242,12 +242,8 @@ const Home = () => {
                 {/* Main Card */}
                 <div className="bg-white/95 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 transform rotate-2 hover:rotate-0 transition-transform duration-500">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-xl overflow-hidden">
-                      <img 
-                        src={logo} 
-                        alt="NM Water Testing Laboratory" 
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-12 h-12 bg-gradient-to-br from-royal-blue-500 to-water-blue-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <Droplets className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="font-semibold text-charcoal-800">Sample Analysis</div>

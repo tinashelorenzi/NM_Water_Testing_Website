@@ -16,7 +16,8 @@ import {
   Twitter,
   Linkedin,
   Instagram,
-  ExternalLink
+  ExternalLink,
+  Droplets
 } from 'lucide-react';
 
 const Footer = () => {
@@ -79,13 +80,21 @@ const Footer = () => {
               <Link to="/" className="flex items-center gap-3 mb-6 group">
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: 5 }}
-                  className="w-14 h-14 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-blue transition-all duration-300"
+                  className="relative"
                 >
-                  <img 
-                    src={logo} 
-                    alt="NM Water Testing Laboratory" 
-                    className="w-full h-full object-cover"
-                  />
+                  {/* Desktop Logo - Natural aspect ratio */}
+                  <div className="hidden sm:block h-14 rounded-2xl overflow-hidden shadow-lg group-hover:shadow-blue transition-all duration-300">
+                    <img 
+                      src={logo} 
+                      alt="NM Water Testing Laboratory" 
+                      className="h-full w-auto object-contain"
+                    />
+                  </div>
+                  
+                  {/* Mobile Logo - Water drop icon */}
+                  <div className="sm:hidden w-14 h-14 bg-gradient-to-br from-royal-blue-500 to-water-blue-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue transition-all duration-300">
+                    <Droplets className="w-7 h-7 text-white" />
+                  </div>
                 </motion.div>
               </Link>
               
